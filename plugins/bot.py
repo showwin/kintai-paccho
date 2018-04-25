@@ -63,7 +63,7 @@ def apply_holiday(message):
     if not employee_key:
         return
 
-    message.reply('ごめんね、King of TimeのAPIがアホだから今は有給申請できないぱっちょ:denpacho_face_large:'.format(user, remained_days))
+    message.reply('ごめんね、King of TimeのAPIがアホだから今は有給申請できないぱっちょ:denpacho_face_large:')
 
 
 # 有給申請
