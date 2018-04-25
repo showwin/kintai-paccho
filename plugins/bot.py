@@ -6,6 +6,7 @@ import time
 from slackbot.bot import listen_to, respond_to
 
 from .employee import Employee
+from .logger import write_log
 from .requester import KOTException, KOTRequester
 
 
@@ -27,6 +28,7 @@ def say_not_allow(message):
 
 @listen_to('おはー')
 @respond_to('おはー')
+@write_log
 def start_timerecord(message):
     if _timerecord(message, '出勤'):
         message.send(':den_paccho1: < おはー　だこくしたよ〜')
@@ -34,6 +36,7 @@ def start_timerecord(message):
 
 @listen_to('店じまい')
 @respond_to('店じまい')
+@write_log
 def end_timerecord(message):
     if _timerecord(message, '退勤'):
         message.send(':gas_paccho_1: < おつー　打刻したよー')
@@ -41,6 +44,7 @@ def end_timerecord(message):
 
 @respond_to('従業員コード')
 @not_allowed_in_busy_time
+@write_log
 def set_employee_key(message):
     # 従業員コードを抜き出す
     user = _get_user(message)
@@ -66,6 +70,7 @@ def set_employee_key(message):
 
 # おまけ
 @respond_to(r'感謝|ありがとう|好き|すごい')
+@write_log
 def be_shy(message):
     message.reply('そんなこと言われたら照れるぱっちょ:denpaccho_upper_left::denpaccho_upper_right:')
 
