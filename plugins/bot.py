@@ -68,7 +68,7 @@ def apply_holiday(message):
 
 # 有給申請
 @respond_to(r'^(?!.*(に有給取得したいです|残休暇日数)).*(?=有給|休暇).+$')
-def help_holiday(message):
+def help_holiday(message, _):
     user = _get_user(message)
     message.send('有給の残日数を聞きたい場合は "@kintai-paccho 残休暇日数"'.format(user=user))
     message.send('有給の取得申請をする場合は "@kintai-paccho 2018年xx月xx日に有給取得したいです"'.format(user=user))
