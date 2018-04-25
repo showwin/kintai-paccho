@@ -7,7 +7,13 @@ from .components.holiday import (
     get_remained_holiday_count,
     help_holiday
 )
-from .components.time_recorder import record_punch_in, record_punch_out
+from .components.time_recorder import (
+    help_rest,
+    record_ending_rest,
+    record_punch_in,
+    record_punch_out,
+    record_starting_rest
+)
 from .decorator import not_allowed_in_busy_time, write_log
 
 
@@ -24,6 +30,21 @@ def record_punch_in_listener(message):
 @write_log
 def record_punch_out_listener(message, _):
     record_punch_out(message)
+
+
+@respond_to(r'^(?!.*(休憩開始|休憩終了)).*(?=休憩|一時退社|もぐもぐタイム|抜け).+$')
+def help_rest_listener(message, _):
+    help_rest(message)
+
+
+@respond_to('^休憩開始$')
+def record_starting_rest_listener(message):
+    record_starting_rest(message)
+
+
+@respond_to('^休憩終了$')
+def record_ending_rest_listener(message):
+    record_ending_rest(message)
 
 
 # 有給系
