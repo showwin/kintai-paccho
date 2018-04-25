@@ -36,6 +36,8 @@ def start_timerecord(message):
 
 @listen_to('^店じまい$')
 @respond_to('^店じまい$')
+@listen_to('^おつー$')
+@respond_to('^おつー$')
 @write_log
 def end_timerecord(message):
     if _timerecord(message, '退勤'):
