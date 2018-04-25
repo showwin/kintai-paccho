@@ -39,7 +39,7 @@ def get_holiday_remained(message):
 
     requester = KOTRequester()
     date_str = datetime.datetime.today().strftime('%Y-%m')
-    resp = requester.get('/monthly-workings/holiday-remained/1000/{}'.format('1000', date_str))
+    resp = requester.get('/monthly-workings/holiday-remained/1000/{}'.format(date_str))
     remained_days = 0
     for record in resp:
         if employee_key == record['employeeKey']:
@@ -65,7 +65,7 @@ def apply_holiday(message):
 
 
 # 有給申請
-@respond_to(r'^(?!.*に有給取得したいです).*(?=有給|休暇).+$')
+@respond_to(r'^(?!.*(に有給取得したいです|残休暇日数)).*(?=有給|休暇).+$')
 def help_holiday(message):
     user = _get_user(message)
     message.send('有給の残日数を聞きたい場合は "@kintai-paccho 残休暇日数"'.format(user=user))
