@@ -29,6 +29,50 @@ def end_timerecord(message):
         message.send(':gas_paccho_1: < おつー　打刻したよー')
 
 
+@respond_to('^残休暇日数$')
+@not_allowed_in_busy_time
+def get_holiday_remained(message):
+    user = _get_user(message)
+    employee_key = _get_employee_key(message)
+    if not employee_key:
+        return
+
+    requester = KOTRequester()
+    date_str = datetime.datetime.today().strftime('%Y-%m')
+    resp = requester.get('/monthly-workings/holiday-remained/1000/{}'.format('1000', date_str))
+    remained_days = 0
+    for record in resp:
+        if employee_key == record['employeeKey']:
+            remained_days = record['holidayRemained'][0]['day']
+            break
+    message.reply('{}くんの残休暇日数は{}日ぱっちょ:denpacho_face_large:'.format(user, remained_days))
+
+
+@respond_to(r'^\d+年\d+月\d+日に有給取得したいです$')
+@not_allowed_in_busy_time
+def apply_holiday(message):
+    try:
+        apply_date_str = message.body['text'].split('に')[0]
+        parsed_date = datetime.datetime.strptime(apply_date_str, '%Y年%m月%d日')
+    except (IndexError, ValueError):
+        message.reply('日付の形式が違うぱっちょ:exclamation: 2018年01月01日のように入力するぱっちょ:oni_paccho:')
+
+    employee_key = _get_employee_key(message)
+    if not employee_key:
+        return
+
+    message.reply('ごめんね、King of TimeのAPIがアホだから今は有給申請できないぱっちょ:denpacho_face_large:'.format(user, remained_days))
+
+
+# 有給申請
+@respond_to(r'^(?!.*に有給取得したいです).*(?=有給|休暇).+$')
+def help_holiday(message):
+    user = _get_user(message)
+    message.send('有給の残日数を聞きたい場合は "@kintai-paccho 残休暇日数"'.format(user=user))
+    message.send('有給の取得申請をする場合は "@kintai-paccho 2018年xx月xx日に有給取得したいです"'.format(user=user))
+    message.send('と伝えてぱっちょ:denpacho_face_large:')
+
+
 # 初回設定
 @respond_to('従業員コード')
 @not_allowed_in_busy_time
@@ -80,10 +124,9 @@ def _timerecord(message, record_type):
         code = 2
     else:
         return False
-    user = _get_user(message)
-    employee_key = Employee.get_key(user)
+
+    employee_key = _get_employee_key(message)
     if not employee_key:
-        _send_help(message, user)
         return False
 
     requester = KOTRequester()
@@ -99,3 +142,12 @@ def _timerecord(message, record_type):
         message.send(e)
         return False
     return True
+
+
+def _get_employee_key(message):
+    user = _get_user(message)
+    employee_key = Employee.get_key(user)
+    if not employee_key:
+        _send_help(message, user)
+        return None
+    return employee_key
