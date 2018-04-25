@@ -3,6 +3,7 @@ import functools
 import json
 import time
 
+import dateutil.relativedelta
 from slackbot.bot import listen_to, respond_to
 
 from .decorator import not_allowed_in_busy_time
@@ -38,7 +39,8 @@ def get_holiday_remained(message):
         return
 
     requester = KOTRequester()
-    date_str = datetime.datetime.today().strftime('%Y-%m')
+    one_month_before = datetime.datetime.today() - dateutil.relativedelta.relativedelta(months=1)
+    date_str = one_month_before.strftime('%Y-%m')
     resp = requester.get('/monthly-workings/holiday-remained/1000/{}'.format(date_str))
     remained_days = 0
     for record in resp:
