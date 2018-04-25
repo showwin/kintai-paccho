@@ -1,17 +1,5 @@
 import datetime
-import functools
 import os
-
-
-# Decorator
-def write_log(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        logger = MessageLogger()
-        message = args[0]
-        logger.write(message)
-        func(message)
-    return wrapper
 
 
 class MessageLogger:

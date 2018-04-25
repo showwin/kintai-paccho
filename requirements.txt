@@ -1,1 +1,2 @@
 slackbot==0.5.1
+python-dateutil==2.6.1
