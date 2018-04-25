@@ -34,12 +34,11 @@ def start_timerecord(message):
         message.send(':den_paccho1: < おはー　だこくしたよ〜')
 
 
-@listen_to('^店じまい$')
-@respond_to('^店じまい$')
-@listen_to('^おつー$')
-@respond_to('^おつー$')
+@listen_to(r'^(店じまい|おつー)$')
+@respond_to(r'^(店じまい|おつー)$')
 @write_log
-def end_timerecord(message):
+# regexp を使う時には2つめの引数に合致した文字列が入る
+def end_timerecord(message, _):
     if _timerecord(message, '退勤'):
         message.send(':gas_paccho_1: < おつー　打刻したよー')
 

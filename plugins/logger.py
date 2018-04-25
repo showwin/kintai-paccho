@@ -8,7 +8,8 @@ def write_log(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         logger = MessageLogger()
-        logger.write(*args, **kwargs)
+        message = args[0]
+        logger.write(message)
         func(*args, **kwargs)
     return wrapper
 
