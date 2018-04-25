@@ -10,7 +10,7 @@ def write_log(func):
         logger = MessageLogger()
         message = args[0]
         logger.write(message)
-        func(*args, **kwargs)
+        func(message)
     return wrapper
 
 

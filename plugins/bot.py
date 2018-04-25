@@ -5,27 +5,13 @@ import time
 
 from slackbot.bot import listen_to, respond_to
 
+from .decorator import not_allowed_in_busy_time
 from .employee import Employee
 from .logger import write_log
 from .requester import KOTException, KOTRequester
 
 
-# Decorator
-def not_allowed_in_busy_time(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        time_now_str = time.strftime('%H%M')
-        if '0830' < time_now_str < '1000' or '1730' < time_now_str < '1800':
-            say_not_allow(*args, **kwargs)
-        else:
-            func(*args, **kwargs)
-    return wrapper
-
-
-def say_not_allow(message):
-    message.send('[08:30 ～ 10:00, 17:30 ～ 18:30] の時間帯はAPIの都合で勤怠登録しかできないんだ。ごめん:paccho:')
-
-
+# 出勤
 @listen_to('^おはー$')
 @respond_to('^おはー$')
 @write_log
@@ -34,15 +20,16 @@ def start_timerecord(message):
         message.send(':den_paccho1: < おはー　だこくしたよ〜')
 
 
+# 退勤
 @listen_to(r'^(店じまい|おつー)$')
 @respond_to(r'^(店じまい|おつー)$')
 @write_log
-# regexp を使う時には2つめの引数に合致した文字列が入る
-def end_timerecord(message, _):
+def end_timerecord(message):
     if _timerecord(message, '退勤'):
         message.send(':gas_paccho_1: < おつー　打刻したよー')
 
 
+# 初回設定
 @respond_to('従業員コード')
 @not_allowed_in_busy_time
 @write_log
