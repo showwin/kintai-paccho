@@ -22,7 +22,7 @@ def record_punch_in_listener(message):
 @listen_to(r'^(店じまい|おつー)$')
 @respond_to(r'^(店じまい|おつー)$')
 @write_log
-def record_punch_out_listener(message):
+def record_punch_out_listener(message, _):
     record_punch_out(message)
 
 
