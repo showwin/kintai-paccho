@@ -26,16 +26,16 @@ def say_not_allow(message):
     message.send('[08:30 ～ 10:00, 17:30 ～ 18:30] の時間帯はAPIの都合で勤怠登録しかできないんだ。ごめん:paccho:')
 
 
-@listen_to('おはー')
-@respond_to('おはー')
+@listen_to('^おはー$')
+@respond_to('^おはー$')
 @write_log
 def start_timerecord(message):
     if _timerecord(message, '出勤'):
         message.send(':den_paccho1: < おはー　だこくしたよ〜')
 
 
-@listen_to('店じまい')
-@respond_to('店じまい')
+@listen_to('^店じまい$')
+@respond_to('^店じまい$')
 @write_log
 def end_timerecord(message):
     if _timerecord(message, '退勤'):
