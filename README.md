@@ -14,33 +14,34 @@ $ nohup python run.py &
 
 ## botとの接し方
 
-### Lv0
+### Lv.0
 登録する
 
-[setup0]
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/setup0.jpg)
 
-[setup1]
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/setup1.jpg)
 
-### Lv1
-`おはー` と `店じまい` (or `おつー` ) で出勤と退勤
+### Lv.1
+`おはー` と `店じまい` (or `おつー` ) で出勤と退勤  
+( `おはー` `店じまい` `おつー` は `@メンション` を飛ばさなくても反応してくれます)
 
-[image0]
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/image0.png)
 
-[image1]
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/image1.png)
 
-[image2]
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/image2.png)
 
-### Lv2
+### Lv.2
 途中で休憩を挟みたいとき
 
-[image3]
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/image3.png)
 
-[image4]
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/image4.png)
 
-### Lv3
+### Lv.3
 残り有給日数を確認する
 
-[image5]
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/image5.png)
 
 ## 注意事項
 可愛いアイコンたちは **著作権に違反しない範囲で** ご自身でご設定ください :pray:
