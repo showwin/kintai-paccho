@@ -8,7 +8,7 @@ def not_allowed_in_busy_time(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         time_now_str = time.strftime('%H%M')
-        if '0830' < time_now_str < '1000' or '1730' < time_now_str < '1800':
+        if '0830' < time_now_str < '1000' or '1730' < time_now_str < '1830':
             _say_not_allow(*args, **kwargs)
         else:
             func(*args, **kwargs)
