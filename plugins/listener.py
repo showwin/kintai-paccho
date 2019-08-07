@@ -1,7 +1,7 @@
 from slackbot.bot import listen_to, respond_to
 
 from .components.configuration import configure_employee
-from .components.extra import be_shy
+from .components.extra import be_shy, i_am_not_alexa, i_am_not_siri
 from .components.holiday import (
     apply_holiday,
     get_remained_holiday_count,
@@ -78,3 +78,14 @@ def configure_employee_listener(message):
 @write_log
 def be_shy_listener(message):
     be_shy(message)
+
+
+@respond_to(r'^(アレクサ|Alexa|alexa)$')
+@write_log
+def i_am_not_alexa(message):
+    i_am_not_alexa(message)
+
+
+@respond_to('^Hey Siri$')
+def i_am_not_siri(message):
+    i_am_not_siri(message)
