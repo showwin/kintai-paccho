@@ -82,7 +82,7 @@ def be_shy_listener(message):
 
 @respond_to(r'^(アレクサ|Alexa|alexa)$')
 @write_log
-def i_am_not_alexa_listener(message):
+def i_am_not_alexa_listener(message, _):
     i_am_not_alexa(message)
 
 
