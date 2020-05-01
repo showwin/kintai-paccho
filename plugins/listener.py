@@ -96,6 +96,7 @@ def i_am_not_siri_listener(message):
     i_am_not_siri(message)
 
 
+@listen_to('^閉店ガラガラ$')
 @respond_to('^閉店ガラガラ$')
 def heiten_listener(message):
     record_punch_out(message)
