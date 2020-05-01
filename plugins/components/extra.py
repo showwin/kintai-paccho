@@ -8,3 +8,7 @@ def i_am_not_alexa(message):
 
 def i_am_not_siri(message):
     message.reply('誰に向かって言ってるぱっちょ:oni_paccho::punch:\nキミの有給1日減らす:paccho::denpaccho_kakusei:')
+
+
+def you_know_secret_command(message):
+    message.reply('君はヒミツのコマンド知ってるぱっちょね:denpacho_face_large:')
