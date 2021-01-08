@@ -9,6 +9,8 @@ Slackから勤怠入力するSlack Botだぱっちょ。
 ```
 $ git clone git@github.com:showwin/kintai-paccho.git
 $ cd kintai-paccho
+$ export SLACK_TOKEN_KINTAI_PACCHO=xxxxxxxxxxxxxxxx  # Slack の Token を設定
+$ export KOT_TOKEN=xxxxxxxxxxxxxxxx  # King of Time の Token を設定
 $ nohup python run.py &
 ```
 
