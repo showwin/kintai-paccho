@@ -22,7 +22,7 @@ def record_punch_out(message):
             ':gas_paccho_1: < おつー　実は今日結婚したんだ:denpaccho_kakusei:',
             ':gas_paccho_1: < おつー　有給減らしといたよ〜:magic_paccho:',
         ]
-        message_index = random.randint(0, 4)
+        message_index = random.randint(0, 6)
         message.send(message_list[message_index])
 
 
