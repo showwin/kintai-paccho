@@ -8,19 +8,19 @@ class Employee():
     EMPLOYEE_DATA_CACHE = {}
 
     @classmethod
-    def create(cls, name, key):
+    def create(cls, user_id, key):
         user_data = cls._read()
-        user_data[name] = key  # KOT の従業員の EmployeeKey
+        user_data[user_id] = key  # KOT の従業員の EmployeeKey
         cls._write(user_data)
 
     @classmethod
-    def get_key(cls, name):
-        if name in cls.EMPLOYEE_DATA_CACHE:
-            return cls.EMPLOYEE_DATA_CACHE[name]
+    def get_key(cls, user_id):
+        if user_id in cls.EMPLOYEE_DATA_CACHE:
+            return cls.EMPLOYEE_DATA_CACHE[user_id]
 
         cls.EMPLOYEE_DATA_CACHE = cls._read()
-        if name in cls.EMPLOYEE_DATA_CACHE:
-            return cls.EMPLOYEE_DATA_CACHE[name]
+        if user_id in cls.EMPLOYEE_DATA_CACHE:
+            return cls.EMPLOYEE_DATA_CACHE[user_id]
         return None
 
     @classmethod

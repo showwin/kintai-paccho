@@ -1,2 +1,4 @@
-slackbot==0.5.1
 python-dateutil==2.6.1
+slack_sdk==3.11.2
+slack_bolt>=1.6.1
+requests==2.26.0
