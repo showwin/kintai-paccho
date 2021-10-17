@@ -13,6 +13,8 @@ Socket Mode は ON にする
 
 必要な権限
 ![](https://github.com/showwin/kintai-paccho/blob/master/doc/setup2.png)
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/setup2-2.png)
+
 
 Slash コマンドの登録
 ![](https://github.com/showwin/kintai-paccho/blob/master/doc/setup3.png)
@@ -36,17 +38,18 @@ supervisor などで監視すると良い良いと思います。
 ### Lv.0
 登録する
 
-**TODO**
 
 ### Lv.1
 `おはー` と `おつー`  で出勤と退勤  
 
-**TODO**
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/how_to_use_1.png)
+
 
 ### Lv.2
-途中で休憩を挟みたいとき
+途中で休憩するとき
 
-**TODO**
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/how_to_use_2.png)
+![](https://github.com/showwin/kintai-paccho/blob/master/doc/how_to_use_3.png)
 
 
 ## 注意事項
