@@ -9,13 +9,20 @@ Slack Appの作成。
 参考: https://slack.dev/bolt-python/tutorial/getting-started
 
 Socket Mode は ON にする
-![](https://github.com/showwin/kintai-paccho/blob/master/doc/setup1.png)
+
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/setup1.png" alt="" style="width: 600px;">
 
 必要な権限
-![](https://github.com/showwin/kintai-paccho/blob/master/doc/setup2.png)
+
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/setup2.png" alt="" style="width: 600px;">
+
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/setup2-2.png" alt="" style="width: 600px;">
+
 
 Slash コマンドの登録
-![](https://github.com/showwin/kintai-paccho/blob/master/doc/setup3.png)
+
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/setup3.png" alt="" style="width: 600px;">
+
 
 
 ## 起動方法
@@ -36,17 +43,18 @@ supervisor などで監視すると良い良いと思います。
 ### Lv.0
 登録する
 
-**TODO**
 
 ### Lv.1
 `おはー` と `おつー`  で出勤と退勤  
 
-**TODO**
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_1.png" alt="" style="width: 600px;">
+
 
 ### Lv.2
-途中で休憩を挟みたいとき
+途中で休憩するとき
 
-**TODO**
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_2.png" alt="" style="width: 600px;">
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_3.png" alt="" style="width: 600px;">
 
 
 ## 注意事項

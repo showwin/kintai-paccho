@@ -12,3 +12,7 @@ def i_am_not_siri(say):
 
 def you_know_secret_command(say):
     say('君はヒミツのコマンド知ってるぱっちょね:denpacho_face_large:')
+
+
+def how_to_use(say):
+    say('"おはー" か "おつー" って言うだけで打刻できるぱっちょ:paccho:\n `/clock-in` `/clock-out` のSlackコマンドでもいいぱっちょ！')
