@@ -47,14 +47,14 @@ supervisor などで監視すると良い良いと思います。
 ### Lv.1
 `おはー` と `おつー`  で出勤と退勤  
 
-<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_1.png" alt="" style="width: 600px;">
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_1.png" alt="" style="width: 300px;">
 
 
 ### Lv.2
 途中で休憩するとき
 
-<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_2.png" alt="" style="width: 600px;">
-<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_3.png" alt="" style="width: 600px;">
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_2.png" alt="" style="width: 300px;">
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_3.png" alt="" style="width: 300px;">
 
 
 ## 注意事項
