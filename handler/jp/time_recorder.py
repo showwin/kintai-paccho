@@ -49,7 +49,7 @@ def record_end_break(say, request: SlackRequest):
         return response_configuration_help(say)
 
     try:
-        record_time(RecordType.START_BREAK, employee_key)
+        record_time(RecordType.END_BREAK, employee_key)
         say(':den_paccho1: < おっけー　がんばっていこ〜')
     except KOTException as e:
         response_kot_error(say, e)
