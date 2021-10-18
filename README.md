@@ -45,7 +45,7 @@ supervisor などで監視すると良い良いと思います。
 
 `/employee-code <your-code>` で登録。従業員番号はKing of Timeログイン後に画面右上の自分の名前の横に出てくる数字のこと。
 
-<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_0.png" alt="" style="width: 300px;">
+<img src="https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_setup.png" alt="" style="width: 300px;">
 
 
 
