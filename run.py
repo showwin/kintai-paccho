@@ -71,16 +71,15 @@ def employee_code_command(ack, command, say):
 
 
 # misc
-@app.event("message")
-def handle_message_events(event, say):
-    if re.search(r'感謝|ありがとう|好き|すごい', event['text']):
-        be_shy(say)
-    elif re.search(r'アレクサ|Alexa|alexa', event['text']):
-        i_am_not_alexa(say)
-    elif re.search(r'Hey Siri', event['text']):
-        i_am_not_siri(say)
-    else:
-        how_to_use(say)
+# FIX ME react only @mention
+# @app.event("message")
+# def handle_message_events(event, say):
+#     if re.search(r'感謝|ありがとう|好き|すごい', event['text']):
+#         be_shy(say)
+#     elif re.search(r'アレクサ|Alexa|alexa', event['text']):
+#         i_am_not_alexa(say)
+#     elif re.search(r'Hey Siri', event['text']):
+#         i_am_not_siri(say)
 
 
 if __name__ == "__main__":
