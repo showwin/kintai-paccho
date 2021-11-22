@@ -26,7 +26,17 @@ def record_time(record_type: RecordType, employee_key):
     requester = KOTRequester()
     payload = json.dumps({
         'time': datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S+09:00'),
-        'date': datetime.datetime.now().strftime('%Y-%m-%d'),
+        'date': _get_working_date(),
         'code': record_type.value,
     })
     requester.post('/daily-workings/timerecord/{}'.format(employee_key), payload)
+
+def _get_working_date():
+    """
+    return today formatting '%Y-%m-%d'.
+    before 5:00 AM, return yesterday.
+    """
+    today = datetime.datetime.now()
+    if today.hour < 5:
+        return (today - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+    return today.strftime('%Y-%m-%d')
