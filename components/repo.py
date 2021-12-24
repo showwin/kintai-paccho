@@ -12,6 +12,7 @@ class Employee():
         user_data = cls._read()
         user_data[user_id] = key  # KOT の従業員の EmployeeKey
         cls._write(user_data)
+        cls.EMPLOYEE_DATA_CACHE = {}
 
     @classmethod
     def get_key(cls, user_id):
