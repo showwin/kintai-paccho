@@ -25,10 +25,10 @@ class RecordType(IntEnum):
     START_BREAK = 3
     END_BREAK = 4
 
-def record_time(record_type: RecordType, employee_key):
+def record_time(record_type: RecordType, employee_key, timezone='+09:00'):
     requester = KOTRequester()
     payload = json.dumps({
-        'time': datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S+09:00'),
+        'time': datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S') + timezone,
         'date': _get_working_date(),
         'code': record_type.value,
     })
