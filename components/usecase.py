@@ -16,6 +16,9 @@ def register_user(user, kot_user_code) -> dict:
         'first_name': resp_dict['firstName']
     }
 
+def update_user_timezone(user, timezone):
+    return Employee.update_timezone(user, timezone)
+
 class RecordType(IntEnum):
     CLOCK_IN = 1
     CLOCK_OUT = 2
