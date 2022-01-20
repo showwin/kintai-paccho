@@ -7,6 +7,7 @@ class Employee():
     DATA_JSON = os.path.join(DATA_DIR, 'employee_data.json')
     CONFIG_JSON = os.path.join(DATA_DIR, 'employee_config.json')
     EMPLOYEE_DATA_CACHE = {}
+    CONFIG_DATA_CACHE = {}
     """
     format of data files:
     DATA_JSON = {  # data must be existed if the user exists
