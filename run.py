@@ -6,7 +6,7 @@ from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 
 from components.typing import SlackRequest
-from handler.jp.configuration import register_employee_code, set_timezone
+from handler.jp.configuration import register_employee_code
 from handler.jp.extra import be_shy, i_am_not_alexa, i_am_not_siri, how_to_use
 from handler.jp.time_recorder import (
     record_clock_in,
@@ -68,12 +68,6 @@ def record_end_break_command(ack, command, say):
 def employee_code_command(ack, command, say):
     ack()
     register_employee_code(say, SlackRequest.build_from_command(command))
-
-@app.command("/set-timezone")
-def set_timezone_command(ack, command, say):
-    ack()
-    set_timezone(say, SlackRequest.build_from_command(command))
-
 
 
 # misc

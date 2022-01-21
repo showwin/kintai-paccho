@@ -16,19 +16,16 @@ def register_user(user, kot_user_code) -> dict:
         'first_name': resp_dict['firstName']
     }
 
-def update_user_timezone(user, timezone):
-    return Employee.update_timezone(user, timezone)
-
 class RecordType(IntEnum):
     CLOCK_IN = 1
     CLOCK_OUT = 2
     START_BREAK = 3
     END_BREAK = 4
 
-def record_time(record_type: RecordType, employee_key, timezone='+09:00'):
+def record_time(record_type: RecordType, employee_key):
     requester = KOTRequester()
     payload = json.dumps({
-        'time': datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S') + timezone,
+        'time': datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S+09:00'),
         'date': _get_working_date(),
         'code': record_type.value,
     })
