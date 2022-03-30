@@ -8,16 +8,16 @@ from handler.jp.helper import response_kot_error
 
 def register_employee_code(say, request: SlackRequest):
     if not _can_register():
-        say('[08:30 ～ 10:00, 17:30 ～ 18:30] の時間帯はAPIの都合で勤怠登録しかできないんだ。ごめん:paccho:')
+        say('[08:30 ～ 10:00, 17:30 ～ 18:30] の時間帯はAPIの都合で勤怠登録しかできないんだっピ。ごめんっピ:takopi_3:')
         return
     if not request.text:
-        say('従業員コードが読み取れなかったよ')
-        say('"/employee-code 1234" のように入力するぱっちょ！')
+        say('従業員コードが読み取れなかったっピ')
+        say('"/employee-code 1234" のように入力するっピ！')
         return
 
     try:
         kot_username = register_user(request.user_id, request.text)
-        say('{last_name} {first_name}さんの設定が完了したぱっちょ！'.format(
+        say('{last_name} {first_name}ちゃんの設定が完了したっピ！'.format(
             last_name=kot_username['last_name'],
             first_name=kot_username['first_name']
         ))

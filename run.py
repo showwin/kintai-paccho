@@ -12,7 +12,10 @@ from handler.jp.time_recorder import (
     record_clock_in,
     record_clock_out,
     record_end_break,
-    record_start_break
+    record_start_break,
+    record_clock_in_oha,
+    record_wakaran,
+    record_clock_in_uzai
 )
 
 app = App(token=os.environ["SLACK_BOT_TOKEN"])
@@ -20,6 +23,16 @@ app = App(token=os.environ["SLACK_BOT_TOKEN"])
 
 # record timestamp
 @app.message(re.compile('^おはー$'))
+def record_clock_in_listener_fake1(message, say):
+    record_clock_in_oha(say, SlackRequest.build_from_message(message))
+
+
+@app.message(re.compile('^おは.*[っッｯ][ぴピﾋ]$'))
+def record_clock_in_listener_fake2(message, say):
+    record_clock_in_uzai(say, SlackRequest.build_from_message(message))
+
+
+@app.message(re.compile('^おは.*[っッｯ][ぴピﾋ].*[！!]+$'))
 def record_clock_in_listener(message, say):
     record_clock_in(say, SlackRequest.build_from_message(message))
 
@@ -31,6 +44,11 @@ def record_clock_in_command(ack, command, say):
 
 
 @app.message(re.compile('^(店じまい|おつー)$'))
+def record_clock_out_listener_fake(message, say):
+    record_wakaran(say, SlackRequest.build_from_message(message))
+
+
+@app.message(re.compile('^(店じまい|おつ).*[っッｯ][ぴピﾋ].*$'))
 def record_clock_out_listener(message, say):
     record_clock_out(say, SlackRequest.build_from_message(message))
 
@@ -42,6 +60,11 @@ def record_clock_out_command(ack, command, say):
 
 
 @app.message(re.compile('^休憩開始$'))
+def record_start_break_listener_fake(message, say):
+    record_wakaran(say, SlackRequest.build_from_message(message))
+
+
+@app.message(re.compile('^休憩開始.*[っッｯ][ぴピﾋ].*$'))
 def record_start_break_listener(message, say):
     record_start_break(say, SlackRequest.build_from_message(message))
 
@@ -53,6 +76,11 @@ def record_start_break_command(ack, command, say):
 
 
 @app.message(re.compile('^休憩終了$'))
+def record_end_break_listener_fake(message, say):
+    record_wakaran(say, SlackRequest.build_from_message(message))
+
+
+@app.message(re.compile('^休憩終了.*[っッｯ][ぴピﾋ].*$'))
 def record_end_break_listener(message, say):
     record_end_break(say, SlackRequest.build_from_message(message))
 

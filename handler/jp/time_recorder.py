@@ -13,9 +13,33 @@ def record_clock_in(say, request: SlackRequest):
 
     try:
         record_time(RecordType.CLOCK_IN, employee_key)
-        say(':den_paccho1: < おはー　だこくしたよ〜')
+        say(':takopi_2: < おはようだっピ！　打刻したっピ')
     except KOTException as e:
         response_kot_error(say, e)
+
+
+def record_clock_in_oha(say, request: SlackRequest):
+    employee_key = Employee.get_key(request.user_id)
+    if not employee_key:
+        return response_configuration_help(say)
+
+    say(':takopi_1: < おはー　ってなんだっピ…？　タコピー語（？）で言ってほしいっピ！')
+
+
+def record_clock_in_uzai(say, request: SlackRequest):
+    employee_key = Employee.get_key(request.user_id)
+    if not employee_key:
+        return response_configuration_help(say)
+
+    say(':takopi_3: < なんだか元気がなさそうだっピね…　もっと元気になってほしいっピ…')
+
+
+def record_wakaran(say, request: SlackRequest):
+    employee_key = Employee.get_key(request.user_id)
+    if not employee_key:
+        return response_configuration_help(say)
+
+    say(':takopi_5: < な、なんのことだかわかんないっピ…')
 
 
 def record_clock_out(say, request: SlackRequest):
@@ -25,7 +49,7 @@ def record_clock_out(say, request: SlackRequest):
 
     try:
         record_time(RecordType.CLOCK_OUT, employee_key)
-        say(':gas_paccho_1: < おつー　打刻したよー')
+        say(':takopi_2: < おつかれさまだっピ！　打刻したっピ')
     except KOTException as e:
         response_kot_error(say, e)
 
@@ -37,10 +61,9 @@ def record_start_break(say, request: SlackRequest):
 
     try:
         record_time(RecordType.START_BREAK, employee_key)
-        say(':gas_paccho_1: < はーい　ゆっくり休んでねー')
+        say(':takopi_2: < わかったっピ！　ゆっくり休むっピ')
     except KOTException as e:
         response_kot_error(say, e)
-
 
 
 def record_end_break(say, request: SlackRequest):
@@ -50,6 +73,6 @@ def record_end_break(say, request: SlackRequest):
 
     try:
         record_time(RecordType.END_BREAK, employee_key)
-        say(':den_paccho1: < おっけー　がんばっていこ〜')
+        say(':takopi_2: < わかったッピ！　がんばるッピ〜')
     except KOTException as e:
         response_kot_error(say, e)
