@@ -31,7 +31,7 @@ def record_clock_in_uzai(say, request: SlackRequest):
     if not employee_key:
         return response_configuration_help(say)
 
-    say(':takopi_3: < なんだか元気がなさそうだっピね…　もっと元気になってほしいっピ…')
+    say(':takopi_3: < なんだか元気がなさそうだっピね…　もっと元気に言ってほしいっピ！！')
 
 
 def record_wakaran(say, request: SlackRequest):
@@ -39,7 +39,7 @@ def record_wakaran(say, request: SlackRequest):
     if not employee_key:
         return response_configuration_help(say)
 
-    say(':takopi_5: < な、なんのことだかわかんないっピ…')
+    say(':takopi_5: < な、なんのことだかわかんないっピ…　タコピー語（？）で言ってほしいっピ！')
 
 
 def record_clock_out(say, request: SlackRequest):
