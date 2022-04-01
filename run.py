@@ -27,12 +27,7 @@ def record_clock_in_listener_fake1(message, say):
     record_clock_in_oha(say, SlackRequest.build_from_message(message))
 
 
-@app.message(re.compile('^おは.*[っッｯ][ぴピﾋ]$'))
-def record_clock_in_listener_fake2(message, say):
-    record_clock_in_uzai(say, SlackRequest.build_from_message(message))
-
-
-@app.message(re.compile('^おは.*[っッｯ][ぴピﾋ].*[！!]+$'))
+@app.message(re.compile('^おは.*[ぴピﾋ].*$'))
 def record_clock_in_listener(message, say):
     record_clock_in(say, SlackRequest.build_from_message(message))
 
@@ -48,7 +43,7 @@ def record_clock_out_listener_fake(message, say):
     record_wakaran(say, SlackRequest.build_from_message(message))
 
 
-@app.message(re.compile('^(店じまい|おつ).*[っッｯ][ぴピﾋ].*$'))
+@app.message(re.compile('^(店じまい|おつ).*[ぴピﾋ].*$'))
 def record_clock_out_listener(message, say):
     record_clock_out(say, SlackRequest.build_from_message(message))
 
@@ -64,7 +59,7 @@ def record_start_break_listener_fake(message, say):
     record_wakaran(say, SlackRequest.build_from_message(message))
 
 
-@app.message(re.compile('^休憩開始.*[っッｯ][ぴピﾋ].*$'))
+@app.message(re.compile('^休憩開始.*[ぴピﾋ].*$'))
 def record_start_break_listener(message, say):
     record_start_break(say, SlackRequest.build_from_message(message))
 
@@ -80,7 +75,7 @@ def record_end_break_listener_fake(message, say):
     record_wakaran(say, SlackRequest.build_from_message(message))
 
 
-@app.message(re.compile('^休憩終了.*[っッｯ][ぴピﾋ].*$'))
+@app.message(re.compile('^休憩終了.*[ぴピﾋ].*$'))
 def record_end_break_listener(message, say):
     record_end_break(say, SlackRequest.build_from_message(message))
 
