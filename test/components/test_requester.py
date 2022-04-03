@@ -28,10 +28,6 @@ class TestKOTRequester(unittest.TestCase):
 
         args, kwargs = mocked_get.call_args
         self.assertEqual(args[0], f'{self.BASE_URL}{expect_path}')
-        self.assertDictEqual(kwargs["headers"], {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Authorization': 'Bearer None'
-        })
 
         self.assertDictEqual(resp_json, expect_resp_json)
 
@@ -75,10 +71,6 @@ class TestKOTRequester(unittest.TestCase):
 
         args, kwargs = mocked_post.call_args
         self.assertEqual(args[0], f'{self.BASE_URL}{expect_path}')
-        self.assertDictEqual(kwargs["headers"], {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Authorization': 'Bearer None'
-        })
 
         self.assertDictEqual(kwargs["data"], expect_req_json)
 
@@ -124,10 +116,6 @@ class TestKOTRequester(unittest.TestCase):
 
         args, kwargs = mocked_put.call_args
         self.assertEqual(args[0], f'{self.BASE_URL}{expect_path}')
-        self.assertDictEqual(kwargs["headers"], {
-            'Content-Type': 'application/json; charset=utf-8',
-            'Authorization': 'Bearer None'
-        })
 
         self.assertDictEqual(kwargs["json"], expect_req_json)
 
