@@ -61,6 +61,7 @@ class TestConfiguration(unittest.TestCase):
 
         self.assertFalse(mocked_register_user.called)
 
+    @freeze_time('2012-03-21 12:34:56')
     @mock.patch("components.usecase.register_user")
     def test_register_employee_code__unset_employee_code(self, mocked_register_user):
         say = MagicMock()
