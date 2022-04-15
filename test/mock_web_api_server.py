@@ -82,7 +82,7 @@ class MockHandler(SimpleHTTPRequestHandler):
         "token_type": "user"
     }
 }
-                """
+"""
     bot_auth_test_response = """
 {
     "ok": true,
