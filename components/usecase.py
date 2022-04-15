@@ -8,13 +8,11 @@ from .requester import KOTRequester
 
 def register_user(user, kot_user_code) -> dict:
     requester = KOTRequester()
-    resp_dict = requester.get('/employees/{}'.format(kot_user_code))
-    employee_key = resp_dict['key']
+    resp_dict = requester.get("/employees/{}".format(kot_user_code))
+    employee_key = resp_dict["key"]
     Employee.create(user, employee_key)
-    return {
-        'last_name': resp_dict['lastName'],
-        'first_name': resp_dict['firstName']
-    }
+    return {"last_name": resp_dict["lastName"], "first_name": resp_dict["firstName"]}
+
 
 class RecordType(IntEnum):
     CLOCK_IN = 1
@@ -22,14 +20,18 @@ class RecordType(IntEnum):
     START_BREAK = 3
     END_BREAK = 4
 
+
 def record_time(record_type: RecordType, employee_key):
     requester = KOTRequester()
-    payload = json.dumps({
-        'time': datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S+09:00'),
-        'date': _get_working_date(),
-        'code': record_type.value,
-    })
-    requester.post('/daily-workings/timerecord/{}'.format(employee_key), payload)
+    payload = json.dumps(
+        {
+            "time": datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S+09:00"),
+            "date": _get_working_date(),
+            "code": record_type.value,
+        }
+    )
+    requester.post("/daily-workings/timerecord/{}".format(employee_key), payload)
+
 
 def _get_working_date():
     """
@@ -38,5 +40,5 @@ def _get_working_date():
     """
     today = datetime.datetime.now()
     if today.hour < 5:
-        return (today - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
-    return today.strftime('%Y-%m-%d')
+        return (today - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+    return today.strftime("%Y-%m-%d")
