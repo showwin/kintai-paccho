@@ -1,0 +1,40 @@
+on: pull_request
+
+name: Check
+
+jobs:
+  format:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
+
+    - uses: abatilo/actions-poetry@v2.0.0
+      with:
+        poetry-version: '1.1.11'
+
+    - run: poetry install
+
+    - run: poetry run black . --check
+
+    - run: poetry run isort . --check
+
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
+
+    - uses: abatilo/actions-poetry@v2.0.0
+      with:
+        poetry-version: '1.1.11'
+
+    - run: poetry install
+
+    - run: poetry run python -m unittest discover
