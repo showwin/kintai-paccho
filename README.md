@@ -33,10 +33,18 @@ $ cd kintai-paccho
 $ export SLACK_BOT_TOKEN=xoxb-<your-bot-token>  # Slack の Token を設定
 $ export SLACK_APP_TOKEN=xapp-<your-app-level-token>  # Slack の Token を設定
 $ export KOT_TOKEN=xxxxxxxxxxxxxxxx  # King of Time の Token を設定
-$ nohup python run.py &
+
+$ poetry install
+$ poetry run python run.py
 ```
 
-supervisor などで監視すると良い良いと思います。
+supervisor などで監視すると良いと思います。
+
+## テスト
+
+```
+$ poetry run python -m unittest discover
+```
 
 ## botとの接し方
 
