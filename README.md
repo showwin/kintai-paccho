@@ -40,6 +40,12 @@ $ poetry run python run.py
 
 supervisor などで監視すると良いと思います。
 
+## フォーマット
+
+```
+$ poetry run black . && poetry run isort .
+```
+
 ## テスト
 
 ```

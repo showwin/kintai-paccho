@@ -15,14 +15,14 @@ class TestHelper(unittest.TestCase):
 
         args, _ = say.call_args
 
-        self.assertIn('kintai-paccho', args[0])
-        self.assertIn('/employee-code', args[0])
-        self.assertIn('入力するぱっちょ！', args[0])
+        self.assertIn("kintai-paccho", args[0])
+        self.assertIn("/employee-code", args[0])
+        self.assertIn("入力するぱっちょ！", args[0])
 
     def test_response_kot_error(self):
         say = MagicMock()
 
-        error_message = 'dummy error message'
+        error_message = "dummy error message"
 
         response_kot_error(say=say, e=KOTException(error_message))
 
@@ -30,5 +30,5 @@ class TestHelper(unittest.TestCase):
 
         call_args_list = say.call_args_list
 
-        self.assertIn('返ってきたぱっちょ！', call_args_list[0][0][0])
+        self.assertIn("返ってきたぱっちょ！", call_args_list[0][0][0])
         self.assertEqual(error_message, call_args_list[1][0][0])

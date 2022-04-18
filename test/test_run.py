@@ -3,13 +3,13 @@ import json
 import unittest
 import urllib.parse
 import uuid
+from test.mock_web_api_server import cleanup_mock_web_api_server, setup_mock_web_api_server
 from unittest import mock
 
 from slack_bolt import BoltRequest
 from slack_sdk.signature import SignatureVerifier
 
 from run import create_app
-from test.mock_web_api_server import setup_mock_web_api_server, cleanup_mock_web_api_server
 
 
 class TestApp(unittest.TestCase):
@@ -23,7 +23,7 @@ class TestApp(unittest.TestCase):
     def test_app__message__record_clock_in(self, mocked_record_clock_in):
         app = create_app(is_test=True)
 
-        response = app.dispatch(_create_message_event(text='おはー'))
+        response = app.dispatch(_create_message_event(text="おはー"))
 
         self.assertEqual(response.status, 200)
         self.assertEqual(mocked_record_clock_in.call_count, 1)
@@ -32,7 +32,7 @@ class TestApp(unittest.TestCase):
     def test_app__message__record_clock_out(self, mocked_record_clock_out):
         app = create_app(is_test=True)
 
-        response = app.dispatch(_create_message_event(text='おつー'))
+        response = app.dispatch(_create_message_event(text="おつー"))
         self.assertEqual(response.status, 200)
 
         self.assertEqual(mocked_record_clock_out.call_count, 1)
@@ -41,7 +41,7 @@ class TestApp(unittest.TestCase):
     def test_app__message__record_start_break(self, mocked_record_start_break):
         app = create_app(is_test=True)
 
-        response = app.dispatch(_create_message_event(text='休憩開始'))
+        response = app.dispatch(_create_message_event(text="休憩開始"))
 
         self.assertEqual(response.status, 200)
         self.assertEqual(mocked_record_start_break.call_count, 1)
@@ -50,7 +50,7 @@ class TestApp(unittest.TestCase):
     def test_app__message__record_end_break(self, mocked_record_end_break):
         app = create_app(is_test=True)
 
-        response = app.dispatch(_create_message_event(text='休憩終了'))
+        response = app.dispatch(_create_message_event(text="休憩終了"))
 
         self.assertEqual(response.status, 200)
         self.assertEqual(mocked_record_end_break.call_count, 1)
@@ -59,7 +59,7 @@ class TestApp(unittest.TestCase):
     def test_app__command__record_clock_in(self, mocked_record_clock_in):
         app = create_app(is_test=True)
 
-        response = app.dispatch(_create_command_event(command='/clock-in'))
+        response = app.dispatch(_create_command_event(command="/clock-in"))
 
         self.assertEqual(response.status, 200)
         self.assertEqual(mocked_record_clock_in.call_count, 1)
@@ -68,7 +68,7 @@ class TestApp(unittest.TestCase):
     def test_app__command__record_clock_out(self, mocked_record_clock_out):
         app = create_app(is_test=True)
 
-        response = app.dispatch(_create_command_event(command='/clock-out'))
+        response = app.dispatch(_create_command_event(command="/clock-out"))
 
         self.assertEqual(response.status, 200)
         self.assertEqual(mocked_record_clock_out.call_count, 1)
@@ -77,7 +77,7 @@ class TestApp(unittest.TestCase):
     def test_app__command__record_start_break(self, mocked_record_start_break):
         app = create_app(is_test=True)
 
-        response = app.dispatch(_create_command_event(command='/start-break'))
+        response = app.dispatch(_create_command_event(command="/start-break"))
 
         self.assertEqual(response.status, 200)
         self.assertEqual(mocked_record_start_break.call_count, 1)
@@ -86,7 +86,7 @@ class TestApp(unittest.TestCase):
     def test_app__command__record_end_break(self, mocked_record_end_break):
         app = create_app(is_test=True)
 
-        response = app.dispatch(_create_command_event(command='/end-break'))
+        response = app.dispatch(_create_command_event(command="/end-break"))
 
         self.assertEqual(response.status, 200)
         self.assertEqual(mocked_record_end_break.call_count, 1)
@@ -95,7 +95,7 @@ class TestApp(unittest.TestCase):
     def test_app__command__register_employee_code(self, mocked_register_employee_code):
         app = create_app(is_test=True)
 
-        response = app.dispatch(_create_command_event(command='/employee-code', text='1234'))
+        response = app.dispatch(_create_command_event(command="/employee-code", text="1234"))
 
         self.assertEqual(response.status, 200)
         self.assertEqual(mocked_register_employee_code.call_count, 1)
@@ -126,10 +126,10 @@ def _create_message_event(text: str):
         "authed_users": ["W111"],
     }
 
-    return BoltRequest(body=body, mode='socket_mode')
+    return BoltRequest(body=body, mode="socket_mode")
 
 
-def _create_command_event(command: str, text: str = 'Hi!'):
+def _create_command_event(command: str, text: str = "Hi!"):
     signature_verifier = SignatureVerifier(signing_secret="secret")
 
     now = datetime.datetime.now()

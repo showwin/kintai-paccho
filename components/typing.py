@@ -10,16 +10,8 @@ class SlackRequest:
 
     @classmethod
     def build_from_message(cls, params) -> "SlackRequest":
-        return cls(
-            channel_id=params['channel'],
-            user_id=params['user'],
-            text=params['text']
-        )
+        return cls(channel_id=params["channel"], user_id=params["user"], text=params["text"])
 
     @classmethod
     def build_from_command(cls, params) -> "SlackRequest":
-        return cls(
-            channel_id=params['channel_id'],
-            user_id=params['user_id'],
-            text=params['text']
-        )
+        return cls(channel_id=params["channel_id"], user_id=params["user_id"], text=params["text"])

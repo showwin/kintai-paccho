@@ -8,25 +8,20 @@ from slack_sdk import WebClient
 
 from components.typing import SlackRequest
 from handler.jp.configuration import register_employee_code
-from handler.jp.extra import be_shy, i_am_not_alexa, i_am_not_siri, how_to_use
-from handler.jp.time_recorder import (
-    record_clock_in,
-    record_clock_out,
-    record_end_break,
-    record_start_break
-)
+from handler.jp.extra import be_shy, how_to_use, i_am_not_alexa, i_am_not_siri
+from handler.jp.time_recorder import record_clock_in, record_clock_out, record_end_break, record_start_break
 
 
 def create_app(is_test=False):
     if is_test:
-        client = WebClient(token='xoxb-valid', base_url='http://localhost:8888')
-        app = App(client=client, signing_secret='secret')
+        client = WebClient(token="xoxb-valid", base_url="http://localhost:8888")
+        app = App(client=client, signing_secret="secret")
     else:
         token = os.environ["SLACK_BOT_TOKEN"]
         app = App(token=token)
 
     # record timestamp
-    @app.message(re.compile('^おはー$'))
+    @app.message(re.compile("^おはー$"))
     def record_clock_in_listener(message, say):
         record_clock_in(say, SlackRequest.build_from_message(message))
 
@@ -35,7 +30,7 @@ def create_app(is_test=False):
         ack()
         record_clock_in(say, SlackRequest.build_from_command(command))
 
-    @app.message(re.compile('^(店じまい|おつー)$'))
+    @app.message(re.compile("^(店じまい|おつー)$"))
     def record_clock_out_listener(message, say):
         record_clock_out(say, SlackRequest.build_from_message(message))
 
@@ -44,7 +39,7 @@ def create_app(is_test=False):
         ack()
         record_clock_out(say, SlackRequest.build_from_command(command))
 
-    @app.message(re.compile('^休憩開始$'))
+    @app.message(re.compile("^休憩開始$"))
     def record_start_break_listener(message, say):
         record_start_break(say, SlackRequest.build_from_message(message))
 
@@ -53,7 +48,7 @@ def create_app(is_test=False):
         ack()
         record_start_break(say, SlackRequest.build_from_command(command))
 
-    @app.message(re.compile('^休憩終了$'))
+    @app.message(re.compile("^休憩終了$"))
     def record_end_break_listener(message, say):
         record_end_break(say, SlackRequest.build_from_message(message))
 
@@ -87,7 +82,7 @@ if __name__ == "__main__":
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
     logger.addHandler(logging.StreamHandler())
-    logger.info('start slackbot')
+    logger.info("start slackbot")
 
     app = create_app()
 

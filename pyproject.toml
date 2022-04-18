@@ -5,15 +5,30 @@ description = ""
 authors = ["ITO Shogo <showwin.czy@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
-python-dateutil = "2.7.0"
-slack-sdk = "3.11.2"
-slack-bolt = "1.11.6"
-requests = "2.26.0"
+python = "^3.9"
+python-dateutil = "^2.7.0"
+slack-sdk = "^3.11.2"
+slack-bolt = "^1.11.6"
+requests = "^2.26.0"
 
 [tool.poetry.dev-dependencies]
 freezegun = "^1.2.1"
+black = "^22.3.0"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+exclude = '''
+(
+    .venv
+    | doc
+)
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 120
