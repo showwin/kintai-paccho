@@ -43,13 +43,13 @@ supervisor などで監視すると良いと思います。
 ## フォーマット
 
 ```
-$ poetry run black . && poetry run isort .
+$ make fmt
 ```
 
 ## テスト
 
 ```
-$ poetry run python -m unittest discover
+$ make test
 ```
 
 ## botとの接し方
@@ -57,7 +57,8 @@ $ poetry run python -m unittest discover
 ### Lv.0
 登録する
 
-bot をチャンネルに呼ぶか、botに直接以下のメッセージを送る。  
+bot をチャンネルに呼ぶか、botに直接以下のメッセージを送る。
+
 `/employee-code <your-code>` で登録。従業員番号はKing of Timeログイン後に画面右上の自分の名前の横に出てくる数字のこと。
 
 ![](https://github.com/showwin/kintai-paccho/raw/master/doc/how_to_use_setup.png)
