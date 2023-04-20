@@ -21,7 +21,7 @@ def create_app(is_test=False):
         app = App(token=token)
 
     # record timestamp
-    @app.message(re.compile("^おはー$"))
+    @app.message(re.compile("^おはー[！？!?]*$"))
     def record_clock_in_listener(message, say):
         record_clock_in(say, SlackRequest.build_from_message(message))
 
@@ -30,7 +30,7 @@ def create_app(is_test=False):
         ack()
         record_clock_in(say, SlackRequest.build_from_command(command))
 
-    @app.message(re.compile("^(店じまい|おつー)$"))
+    @app.message(re.compile("^(店じまい|おつー)[！？!?]*$"))
     def record_clock_out_listener(message, say):
         record_clock_out(say, SlackRequest.build_from_message(message))
 
